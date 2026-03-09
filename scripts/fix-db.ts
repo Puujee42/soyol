@@ -47,6 +47,10 @@ async function fixDb() {
         console.log('Creating indexes...');
         await collection.createIndex({ createdAt: -1 });
         await collection.createIndex({ category: 1 });
+        await collection.createIndex(
+            { name: 'text', description: 'text', brand: 'text', category: 'text' },
+            { weights: { name: 10, brand: 5, description: 3, category: 1 }, name: 'products_text_search' }
+        );
 
 
         console.log('Indexes created successfully.');

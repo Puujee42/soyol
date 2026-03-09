@@ -237,8 +237,8 @@ function SearchContent() {
             </h1>
             <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-1">
               {products.length === 0
-                ? 'No matches found'
-                : `${products.length} results found`}
+                ? 'Үр дүн олдсонгүй'
+                : `${products.length} бараа олдлоо`}
             </p>
           </div>
           <div className="p-2 bg-white rounded-xl shadow-sm border border-gray-100">

@@ -21,7 +21,16 @@ export async function GET(request: NextRequest) {
     }
 
     if (q) {
-      filter.$text = { $search: q };
+      try {
+        filter.$text = { $search: q };
+      } catch (err) {
+        // Fallback to regex search if $text fails (e.g. index missing)
+        filter.$or = [
+          { name: { $regex: q, $options: 'i' } },
+          { description: { $regex: q, $options: 'i' } },
+          { brand: { $regex: q, $options: 'i' } },
+        ];
+      }
     }
 
     if (minPrice || maxPrice) {

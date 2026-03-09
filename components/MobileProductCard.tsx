@@ -7,6 +7,8 @@ import { Star, ShoppingCart } from 'lucide-react';
 import { type Product } from '@/models/Product';
 import { useLanguage } from '@/context/LanguageContext';
 import { formatCurrency } from '@/lib/utils';
+import { useCartStore } from '@/store/cartStore';
+import toast from 'react-hot-toast';
 
 interface MobileProductCardProps {
     product: Product;
@@ -14,6 +16,7 @@ interface MobileProductCardProps {
 
 export default function MobileProductCard({ product }: MobileProductCardProps) {
     const { convertPrice, currency } = useLanguage();
+    const addItem = useCartStore((state) => state.addItem);
     const price = convertPrice(product.price);
 
     // Format price
@@ -81,7 +84,21 @@ export default function MobileProductCard({ product }: MobileProductCardProps) {
                                 whileTap={{ scale: 0.9 }}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    // Add to cart logic
+                                    e.stopPropagation();
+                                    addItem({
+                                        id: product.id,
+                                        name: product.name,
+                                        price: product.price,
+                                        image: product.image || '',
+                                        rating: product.rating ?? 0,
+                                        stockStatus: (product.stockStatus as any) || 'in-stock',
+                                        category: product.category || '',
+                                        description: product.description || undefined,
+                                    });
+                                    toast.success('Сагсанд нэмлээ', {
+                                        style: { borderRadius: '14px', background: '#FF5000', color: '#fff' },
+                                        duration: 1500,
+                                    });
                                 }}
                                 className="w-10 h-10 flex items-center justify-center bg-[#FF5000] text-white rounded-2xl shadow-lg shadow-orange-500/20 active:scale-95 transition-all"
                             >
