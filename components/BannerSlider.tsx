@@ -47,25 +47,16 @@ export default function BannerSlider() {
   }, [nextSlide, isHovered, banners.length]);
 
   const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '20%' : '-20%',
+    enter: (_direction: number) => ({
       opacity: 0,
-      scale: 1.1,
-      filter: 'blur(10px)',
     }),
     center: {
       zIndex: 1,
-      x: 0,
       opacity: 1,
-      scale: 1,
-      filter: 'blur(0px)',
     },
-    exit: (direction: number) => ({
+    exit: (_direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? '20%' : '-20%',
       opacity: 0,
-      scale: 0.9,
-      filter: 'blur(10px)',
     }),
   };
 
@@ -89,27 +80,10 @@ export default function BannerSlider() {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{
-            x: { type: 'spring', stiffness: 200, damping: 25 },
-            opacity: { duration: 0.6 },
-            scale: { duration: 0.8 },
-            filter: { duration: 0.6 }
-          }}
+          transition={{ opacity: { duration: 0.3, ease: 'easeInOut' } }}
           className="absolute inset-0 w-full h-full"
         >
-          <motion.div
-            className="relative w-full h-full"
-            animate={{
-              scale: [1, 1.05, 1],
-              x: [0, 10, 0, -10, 0],
-              y: [0, 5, 0, -5, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          >
+          <div className="relative w-full h-full">
             <Image
               src={banners[currentIndex]?.image || ''}
               alt={banners[currentIndex]?.title || `Banner ${currentIndex + 1}`}
@@ -118,7 +92,7 @@ export default function BannerSlider() {
               className="object-cover"
               sizes="100vw"
             />
-          </motion.div>
+          </div>
 
           {/* Subtle Overlay for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none" />

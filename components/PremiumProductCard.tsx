@@ -30,16 +30,16 @@ interface Product {
 }
 
 const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 20, scale: 0.97 },
     visible: {
         opacity: 1,
         y: 0,
         scale: 1,
         transition: {
             type: "spring",
-            stiffness: 100,
+            stiffness: 200,
             damping: 20,
-            duration: 0.5
+            duration: 0.25
         } as any
     },
 };
@@ -58,10 +58,10 @@ export default function PremiumProductCard({ product, isFeatured = false }: { pr
             style={{ touchAction: 'manipulation' }}
             whileHover={{ y: -4 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
             <Link href={`/product/${product.id}`} className="block h-full">
-                <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 h-full flex flex-col relative">
+                <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-200 h-full flex flex-col relative">
 
                     {/* Image Section */}
                     <div className="relative aspect-square overflow-hidden bg-gray-50/50">
@@ -114,7 +114,7 @@ export default function PremiumProductCard({ product, isFeatured = false }: { pr
                             src={product.image || '/placeholder.png'}
                             alt={product.name}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out p-2"
+                            className="object-cover group-hover:scale-105 transition-transform duration-400 ease-in-out p-2"
                             sizes="(max-width: 768px) 50vw, 25vw"
                         />
                     </div>

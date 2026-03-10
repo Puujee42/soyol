@@ -151,7 +151,7 @@ export default function LuxuryNavbar() {
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 100 }}
-        className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-white border-b border-orange-100/50 shadow-lg shadow-orange-50/50'
           : 'bg-white border-b border-gray-100/30'
           }`}
@@ -159,7 +159,7 @@ export default function LuxuryNavbar() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="px-4 sm:px-6 lg:px-8">
-            <div className={`relative z-50 flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-24'
+            <div className={`relative z-50 flex items-center justify-between transition-all duration-200 ${scrolled ? 'h-16' : 'h-24'
               }`}>
 
               {/* Logo */}
@@ -465,7 +465,7 @@ export default function LuxuryNavbar() {
 
       {/* ── SPACER ─────────────────────────────────────────────────────────── */}
       <div
-        className={`transition-all duration-500 ${scrolled ? 'h-14 lg:h-[116px]' : 'h-14 lg:h-[148px]'}`}
+        className={`transition-all duration-300 ${scrolled ? 'h-14 lg:h-[124px]' : 'h-14 lg:h-[180px]'}`}
         style={{
           marginTop: 'env(safe-area-inset-top)',
         }}

@@ -74,7 +74,7 @@ body {
 /* Orange Glow */
 .glow-orange {
   box-shadow: 0 4px 20px rgba(255, 121, 0, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 .glow-orange:hover {
@@ -106,13 +106,13 @@ body {
   background: white;
   border: 1px solid #f0f0f0;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-clean:hover {
   border-color: #FF7900;
   box-shadow: 0 8px 24px rgba(255, 121, 0, 0.15);
-  transform: translateY(-8px);
+  transform: translateY(-4px);
 }
 
 /* Floating */
@@ -126,10 +126,6 @@ body {
   50% {
     transform: translateY(-8px);
   }
-}
-
-.float-gentle:hover {
-  animation: float 2s ease-in-out infinite;
 }
 
 /* Icon Bounce Animation */
@@ -316,7 +312,7 @@ body {
 
 /* Premium Hover Effects */
 .luxury-hover {
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: all 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .luxury-hover:hover {
@@ -484,5 +480,5 @@ body {
 }
 
 .search-dropdown-enter {
-  animation: searchDropdownFade 0.2s ease-out;
+  animation: searchDropdownFade 0.15s ease-out;
 }

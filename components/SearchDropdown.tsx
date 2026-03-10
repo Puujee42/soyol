@@ -40,7 +40,7 @@ const SearchDropdown = ({
         e.preventDefault();
         onMouseDown?.();
       }}
-      className="absolute top-full left-0 w-full bg-white mt-2 rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-[100] transition-all duration-200 ease-out search-dropdown-enter"
+      className="absolute top-full left-0 w-full bg-white mt-2 rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-[100] transition-all duration-150 ease-out search-dropdown-enter"
     >
       <div className="max-h-[400px] overflow-y-auto">
         {isLoading ? (

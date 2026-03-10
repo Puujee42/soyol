@@ -1,18 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCollection } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
-import { auth } from '@/lib/auth';
 
 export async function DELETE(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { userId, role } = await auth();
-        if (!userId || role !== 'admin') {
-            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-        }
-
         const { id } = await params;
         const banners = await getCollection('banners');
         const result = await banners.deleteOne({ _id: new ObjectId(id) });
@@ -33,11 +27,6 @@ export async function PATCH(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { userId, role } = await auth();
-        if (!userId || role !== 'admin') {
-            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-        }
-
         const { id } = await params;
         const updates = await request.json();
 
